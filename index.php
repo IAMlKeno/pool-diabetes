@@ -1,7 +1,10 @@
+<?php 
+$title = "Demo";
+?>
 <!Doctype htm>
 <html>
 <head>
-	<title>Demo</title>
+	<title><?php echo $title; ?></title>
 </head>
 <body>
 	<ol>
