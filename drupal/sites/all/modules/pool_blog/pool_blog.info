@@ -1,0 +1,4 @@
+name = Pool Blogger
+description = Customization for the pool blogging site.
+core = 7.x
+dependencies[] = blog

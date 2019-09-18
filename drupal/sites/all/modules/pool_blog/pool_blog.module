@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Customizations for pool blogging site.
+ */
+
+function pool_blog_page_alter(&$page) {
+  /*$menu = menu_get_item();
+//  dpm($menu['path'], 'menu');
+  $path = $menu['path'];
+  $add_blog_path = '/add\/blog/';
+  if (preg_match($add_blog_path, $path)) {
+    dpm($page, 'page');
+  }*/
+}
+
+function pool_blog_node_view_alter(&$build) {
+ // dpm($build, 'build');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function pool_blog_form_blog_node_form_alter(&$form, &$form_state, $form_id) {
+  form_load_include($form_state, 'inc', 'pool_blog', 'includes/utilities');
+  $form['word_doc'] = array(
+    '#name' => 'word_doc',
+    '#type' => 'managed_file',
+    // '#type' => 'file',
+    '#title' => t('Upload a document'),
+    '#description' => t('Such as a word document.'),
+    //'#upload_location' => drupal_realpath('public://tmp'),
+    '#upload_validators' => array(
+      'file_validate_extensions' => NULL,
+    //   // 'file_validate_size' => array(2*1024*1024),
+    ),
+    '#weight' => -4,
+  );
+  // $form['body']['und'][0]['#default_value'] = 'full_html';
+  $form['#submit'][] = 'pool_blog_blog_node_submit';
+  dpm($form, 'pool_form');
+  dpm($form_state, 'state');
+}
