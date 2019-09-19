@@ -3,6 +3,7 @@ description = Supports configurable user profiles.
 package = Core
 version = VERSION
 core = 7.x
+depenencies[] = field
 files[] = profile.test
 configure = admin/config/people/profile
 ; The Profile module is deprecated, and included in Drupal 7 for legacy
